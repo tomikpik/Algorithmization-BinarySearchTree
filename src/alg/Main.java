@@ -77,17 +77,20 @@ class Tree {
     }
 
     private int removeNode(Node n) {
+        int RV = n.value;
         if (n.left == null && n.right == null) {            //nema zadneho potomka
-
+            //vymažu
         } else if (n.left != null && n.right == null) {     //ma pouze leveho
-
+            //propojím následníka s rodičem
         } else if (n.left == null && n.right != null) {     //ma pouze praveho
-
+            //propojím následníka s rodičem
         } else {                                            //ma oba dva
-
+            //dosadím do uzlu hodnotu lin z prava
+            RV=this.removeNode(n.rightLinear);
+            n.value=RV;
         }
 
-        return 0;
+        return RV;
     }
 
     /**
